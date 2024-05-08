@@ -1,13 +1,11 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Layout from '@components/layout/Layout';
 import { Auth, Catalog, Home, NotFound, Top } from '@pages/pages';
 import { useSelector } from 'react-redux';
-import Layout from '@components/layout/Layout';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 const Router = () => {
-	const theme = useSelector(state => state.theme.theme);
-	const body = document.body;
-
-	body.setAttribute('data-theme', theme);
+	const theme = useSelector(state => state.theme.value);
+	document.getElementsByTagName('html')[0].setAttribute('data-theme', theme);
 
 	return (
 		<BrowserRouter>

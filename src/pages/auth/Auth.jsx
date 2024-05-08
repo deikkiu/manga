@@ -1,19 +1,21 @@
-import { changeTheme } from '@store/slices/themeSlice';
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+
+import { changeTheme } from '@store/slices/themeSlice';
+
+import styles from './Auth.module.scss';
 
 const Auth = () => {
-	const theme = useSelector(state => state.theme.theme);
+	const theme = useSelector(state => state.theme.value);
 	const dispatch = useDispatch();
 
 	return (
 		<>
-			<div>{theme}</div>
-			<button
-				onClick={() =>
-					dispatch(changeTheme(theme === 'light' ? 'dark' : 'light'))
-				}>
-				Поменять тему
-			</button>
+			<p className={styles.text}>{theme}</p>
+			<button onClick={() => dispatch(changeTheme())}>Поменять тему</button>
+			<br />
+			<br />
+			<Link to="/">Home</Link>
 		</>
 	);
 };
